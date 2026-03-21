@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes | Faith & Form</title>
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  color: #2b2b2b;
+  background-color: #f5f3f0;
+  line-height: 1.7;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #fafafa;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav h1 { font-size: 22px; color: #2b2b2b; }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2b2b2b;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #7a6650;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+  height: 50vh;
+  background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  background: rgba(0,0,0,0.4); /* overlay */
+  transition: background 0.5s ease;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
+  transition: transform 0.5s ease;
+}
+
+/* Hero Hover Effects */
+.hero:hover {
+  transform: scale(1.03);
+}
+
+.hero:hover::after {
+  background: rgba(0,0,0,0.3);
+}
+
+.hero:hover .hero-content {
+  transform: translateY(-5px);
+}
+
+/* Hero Text & Button */
+.hero h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  transition: transform 0.5s ease;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #f5f3f0;
+  margin-bottom: 20px;
+  transition: transform 0.5s ease;
+}
+
+.hero .btn {
+  padding: 12px 25px;
+  border: none;
+  background: #7a6650;
+  color: #f5f3f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.hero .btn:hover {
+  transform: translateY(-3px);
+  background: #5f513e;
+}
+
+/* Container & Headings */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 28px;
+  color: #2b2b2b;
+  font-weight: 500;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.container h2::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #7a6650;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.container h2:hover::after { width: 60px; }
+
+.container p.subtitle {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* Class Cards */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fffaf6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02) rotateZ(0.5deg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin-bottom: 8px;
+  color: #2b2b2b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-content h3 svg {
+  width: 24px;
+  height: 24px;
+  fill: #7a6650;
+  transition: transform 0.3s;
+}
+
+.card:hover .card-content h3 svg {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.card-content p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* CTA Button */
+.btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  border: none;
+  background: #7a6650;
+  color: #f5f3f0;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background: #5f513e;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  background: #7a6650;
+  color: #f5f3f0;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav { flex-direction: column; gap: 10px; }
+  .hero h1 { font-size: 28px; }
+  .service-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>Faith & Form</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Our Classes</h1>
+    <p>Find the perfect class to match your goals and energy</p>
+    <button class="btn">Book a Class</button>
+  </div>
+</section>
+
+<div class="container">
+  <h2>Designed for All Fitness Levels</h2>
+  <p class="subtitle">Explore classes that fit your goals and your schedule.</p>
+
+  <div class="service-grid">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Yoga class">
+      <div class="card-content">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
+          Yoga
+        </h3>
+        <p>Increase flexibility, focus, and inner calm in a welcoming environment.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Pilates class">
+      <div class="card-content">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
+          Pilates
+        </h3>
+        <p>Strengthen your core, improve posture, and enjoy mindful movement.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Strength Training class">
+      <div class="card-content">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
+          Strength
+        </h3>
+        <p>Build muscle, confidence, and resilience in a supportive setting.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn">Book Your Class</button>
+</div>
+
+<footer>
+  <p>© 2026 Faith & Form Fitness Studio</p>
+</footer>
+
+</body>
+</html>

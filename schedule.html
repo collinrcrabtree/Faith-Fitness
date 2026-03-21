@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule | Faith & Form</title>
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  color: #2b2b2b;
+  background-color: #f5f3f0;
+  line-height: 1.7;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #fafafa;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+nav h1 { font-size: 22px; color: #2b2b2b; }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2b2b2b;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #7a6650;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+  height: 50vh;
+  background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  background: rgba(0,0,0,0.25);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #f5f3f0;
+  margin-bottom: 20px;
+}
+
+.hero .btn {
+  padding: 12px 25px;
+  border: none;
+  background: #7a6650;
+  color: #f5f3f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.hero .btn:hover {
+  transform: translateY(-3px);
+  background: #5f513e;
+}
+
+/* Container & Headings */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 28px;
+  color: #2b2b2b;
+  font-weight: 500;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.container h2::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #7a6650;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.container h2:hover::after { width: 60px; }
+
+.container p {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* Mindbody Widget */
+.schedule-embed-wrapper {
+  background: #fffaf6;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-top: 30px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.schedule-embed-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.schedule-embed-wrapper .mindbody-widget {
+  border-radius: 12px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #7a6650;
+  color: #f5f3f0;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav { flex-direction: column; gap: 10px; }
+  .hero h1 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>Faith & Form</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Class Schedule</h1>
+    <p>Find the perfect class for your goals and book your spot online.</p>
+    <button class="btn" onclick="document.querySelector('.schedule-embed-wrapper').scrollIntoView({behavior: 'smooth'});">View Schedule</button>
+  </div>
+</section>
+
+<div class="container">
+  <h2>Book Your Session</h2>
+  <p>Select a class time that works best for you. Our schedule is updated in real-time.</p>
+
+  <div class="schedule-embed-wrapper">
+    <div class="mindbody-widget" data-widget-type="Schedules" data-widget-id="78477613f70"></div>
+    <script async src="https://brandedweb.mindbodyonline.com/embed/widget.js"></script>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Faith & Form Fitness Studio</p>
+</footer>
+
+</body>
+</html>
