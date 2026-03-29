@@ -4,89 +4,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Schedule | Faith & Form</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 :root{--ink:#1c1a17;--paper:#f2ede6;--stone:#a89b88;--moss:#6b7c5e;--birch:#d4c9b5;--warm-white:#faf8f4;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.8;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 56px;background:transparent;position:fixed;top:0;left:0;right:0;z-index:1000;transition:background 0.5s,padding 0.4s,border-bottom 0.4s;border-bottom:1px solid transparent;}
-nav.scrolled{background:rgba(242,237,230,0.92);backdrop-filter:blur(12px);padding:18px 56px;border-bottom:1px solid var(--birch);}
-.nav-logo{display:flex;flex-direction:column;gap:1px;}
-.nav-logo .wordmark{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);line-height:1;}
-.nav-logo .tagline{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone);}
-nav ul{list-style:none;display:flex;gap:36px;}
-nav a{text-decoration:none;color:var(--ink);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;position:relative;padding-bottom:3px;}
-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--moss);transition:width 0.4s ease;}
-nav a:hover::after{width:100%;}
-nav a:hover{color:var(--moss);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Zen Kaku Gothic New',sans-serif;background:var(--paper);}
 
-.page-hero{height:58vh;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 72px;}
-.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(10%) brightness(0.82);}
-.page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,26,23,0.6) 0%,rgba(28,26,23,0.1) 60%);}
-.page-hero-content{position:relative;z-index:1;}
-.page-hero-content .eyebrow{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--birch);margin-bottom:12px;display:block;opacity:0;animation:fadeUp 0.9s 0.2s forwards;}
-.page-hero-content h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;color:#faf8f4;line-height:1.1;opacity:0;animation:fadeUp 0.9s 0.4s forwards;}
-.page-hero-content p{font-size:15px;color:var(--birch);margin-top:12px;opacity:0;animation:fadeUp 0.9s 0.6s forwards;}
+/* ✅ HEADER (MATCHES HOMEPAGE) */
+#nav-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 56px;
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  transition:.4s;
+}
+#nav-header.scrolled{
+  background:rgba(242,237,230,0.92);
+  backdrop-filter:blur(10px);
+  padding:18px 56px;
+}
 
-.section-label{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--stone);margin-bottom:20px;display:block;}
+.nav-logo .wordmark{
+  font-family:'Cormorant Garamond',serif;
+  letter-spacing:.25em;
+}
 
-/* SCHEDULE SECTION */
-.schedule-section{padding:80px 56px 120px;max-width:1100px;margin:0 auto;}
-.schedule-header{text-align:center;margin-bottom:60px;}
-.schedule-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--ink);margin-bottom:12px;}
-.schedule-header p{font-size:14px;color:#6b6358;max-width:500px;margin:0 auto;}
+#nav-header ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
 
-/* Mindbody embed wrapper */
-.schedule-embed-wrapper{background:var(--warm-white);border:1px solid var(--birch);overflow:hidden;}
+#nav-header a{
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.3em;
+  color:var(--ink);
+}
 
-/* Quick info strip */
-.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--birch);margin-bottom:2px;}
-.info-item{background:var(--warm-white);padding:36px 40px;text-align:center;}
-.info-item .icon{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--moss);margin-bottom:8px;display:block;}
-.info-item h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--ink);margin-bottom:6px;}
-.info-item p{font-size:12px;color:var(--stone);line-height:1.7;}
+/* HERO OFFSET FIX */
+.page-hero{
+  margin-top:100px;
+  height:58vh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:0 56px 72px;
+}
 
-.btn-primary{display:inline-block;padding:16px 36px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;transition:background 0.3s,transform 0.3s;border:none;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;}
-.btn-primary:hover{background:var(--moss);transform:translateY(-2px);}
+.page-hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-/* FOOTER */
-footer{background:var(--ink);color:var(--stone);padding:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:40px;}
-.footer-brand .wordmark{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.3em;text-transform:uppercase;color:var(--birch);display:block;margin-bottom:8px;}
-.footer-brand p{font-size:12px;line-height:1.8;max-width:260px;color:#5a534a;}
-.footer-center{text-align:center;}
-.footer-divider{width:1px;height:60px;background:#333028;margin:0 auto 20px;}
-.footer-center p{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#3e3830;}
-.footer-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
-.footer-links a{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#5a534a;text-decoration:none;transition:color 0.3s;}
-.footer-links a:hover{color:var(--birch);}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:0.15s;}
-.reveal-delay-2{transition-delay:0.3s;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@media(max-width:900px){
-  nav,nav.scrolled{padding:18px 24px;}
-  nav ul{gap:18px;}
-  .page-hero{padding:0 24px 48px;}
-  .schedule-section{padding:56px 24px 80px;}
-  .info-strip{grid-template-columns:1fr;}
-  footer{grid-template-columns:1fr;}
-  .footer-links{align-items:flex-start;}
-  .footer-center{text-align:left;}
-  .footer-divider{margin:0 0 20px;}
+.page-hero-content{
+  position:relative;
+  color:white;
+}
+
+/* SIMPLE CONTENT */
+.schedule-section{
+  padding:80px 56px;
+}
+
+footer{
+  background:#111;
+  color:#aaa;
+  padding:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* ✅ NOT A NAV ANYMORE */
+.footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.footer-links a{
+  color:#aaa;
+  text-decoration:none;
 }
 </style>
 </head>
+
 <body>
 
-<nav id="nav">
+<!-- ✅ ONLY REAL NAV -->
+<nav id="nav-header">
   <div class="nav-logo">
     <span class="wordmark">Faith & Form</span>
-    <span class="tagline">Studio · Est. 2026</span>
   </div>
+
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -97,70 +115,39 @@ footer{background:var(--ink);color:var(--stone);padding:56px;display:grid;grid-t
 </nav>
 
 <section class="page-hero">
-  <img src="image4.jpeg" alt="Faith & Form Studio">
+  <img src="image4.jpeg">
   <div class="page-hero-content">
-    <span class="eyebrow">Faith & Form Studio</span>
     <h1>Class Schedule</h1>
-    <p>Find the perfect class time and book your spot online.</p>
   </div>
 </section>
 
-<div class="info-strip reveal">
-  <div class="info-item">
-    <span class="icon">◷</span>
-    <h3>Real-Time Booking</h3>
-    <p>Our schedule updates live. Reserve your spot the moment a class opens.</p>
-  </div>
-  <div class="info-item reveal-delay-1">
-    <span class="icon">◈</span>
-    <h3>All Levels</h3>
-    <p>Every class is designed to welcome beginners and challenge experienced movers.</p>
-  </div>
-  <div class="info-item reveal-delay-2">
-    <span class="icon">✦</span>
-    <h3>Questions?</h3>
-    <p>Not sure which class is right for you? <a href="contact.html" style="color:var(--moss);text-decoration:none;border-bottom:1px solid var(--birch);">Send us a message.</a></p>
-  </div>
-</div>
-
 <div class="schedule-section">
-  <div class="schedule-header reveal">
-    <span class="section-label">Book Your Session</span>
-    <h2>Select a time that works for you.</h2>
-    <p>Our schedule is updated in real-time. All classes can be booked directly below.</p>
-  </div>
+  <h2>Book Your Session</h2>
 
-  <div class="schedule-embed-wrapper reveal">
+  <div class="schedule-embed-wrapper">
     <div class="mindbody-widget" data-widget-type="Schedules" data-widget-id="78477613f70"></div>
     <script async src="https://brandedweb.mindbodyonline.com/embed/widget.js"></script>
   </div>
 </div>
 
 <footer>
-  <div class="footer-brand">
-    <span class="wordmark">Faith & Form</span>
-    <p>A mindful fitness studio in Stearns, KY. Yoga, Pilates, and Strength for every body.</p>
-  </div>
-  <div class="footer-center">
-    <div class="footer-divider"></div>
-    <p>© 2026 Faith & Form</p>
-  </div>
-  <nav class="footer-links">
+  <div>© 2026 Faith & Form</div>
+
+  <!-- ✅ FIXED -->
+  <div class="footer-links">
     <a href="about.html">About</a>
     <a href="classes.html">Classes</a>
     <a href="schedule.html">Schedule</a>
     <a href="contact.html">Contact</a>
-  </nav>
+  </div>
 </footer>
 
 <script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
+const nav = document.getElementById('nav-header');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
 </script>
+
 </body>
 </html>
