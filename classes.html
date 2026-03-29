@@ -3,270 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Faith & Form</title>
-
+<title>Classes | Faith & Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <style>
-html { scroll-behavior: smooth; }
+:root{--ink:#1c1a17;--paper:#f2ede6;--stone:#a89b88;--moss:#6b7c5e;--birch:#d4c9b5;--warm-white:#faf8f4;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.8;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 56px;background:transparent;position:fixed;top:0;left:0;right:0;z-index:1000;transition:background 0.5s,padding 0.4s,border-bottom 0.4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(242,237,230,0.92);backdrop-filter:blur(12px);padding:18px 56px;border-bottom:1px solid var(--birch);}
+.nav-logo{display:flex;flex-direction:column;gap:1px;}
+.nav-logo .wordmark{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);line-height:1;}
+.nav-logo .tagline{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone);}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav a{text-decoration:none;color:var(--ink);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;position:relative;padding-bottom:3px;}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--moss);transition:width 0.4s ease;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--moss);}
 
-body {
-  margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  color: #2b2b2b;
-  background-color: #f5f3f0;
-  line-height: 1.7;
-}
+.page-hero{height:58vh;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 72px;}
+.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(10%) brightness(0.82);}
+.page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,26,23,0.6) 0%,rgba(28,26,23,0.1) 60%);}
+.page-hero-content{position:relative;z-index:1;}
+.page-hero-content .eyebrow{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--birch);margin-bottom:12px;display:block;opacity:0;animation:fadeUp 0.9s 0.2s forwards;}
+.page-hero-content h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;color:#faf8f4;line-height:1.1;opacity:0;animation:fadeUp 0.9s 0.4s forwards;}
+.page-hero-content p{font-size:15px;color:var(--birch);margin-top:12px;opacity:0;animation:fadeUp 0.9s 0.6s forwards;}
 
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #fafafa;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  font-weight: 500;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+.section-label{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--stone);margin-bottom:20px;display:block;}
 
-nav h1 { font-size: 22px; color: #2b2b2b; }
+/* INTRO */
+.classes-intro{text-align:center;padding:80px 40px 60px;max-width:700px;margin:0 auto;}
+.classes-intro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.classes-intro p{font-size:15px;color:#6b6358;line-height:1.9;}
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
+/* FEATURED CLASSES — alternating layout */
+.class-feature{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--birch);margin-bottom:2px;}
+.class-feature.reverse{direction:rtl;}
+.class-feature.reverse > *{direction:ltr;}
+.class-feature-img{overflow:hidden;min-height:480px;}
+.class-feature-img img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(8%) brightness(0.92);transition:transform 6s ease;}
+.class-feature-img:hover img{transform:scale(1.05);}
+.class-feature-copy{background:var(--warm-white);display:flex;flex-direction:column;justify-content:center;padding:72px 64px;}
+.class-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:var(--birch);line-height:1;margin-bottom:8px;}
+.class-feature-copy h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.class-feature-copy p{font-size:14px;color:#5a5549;line-height:1.9;margin-bottom:32px;max-width:400px;}
+.class-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.tag{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--birch);color:var(--stone);}
+.btn-primary{display:inline-block;padding:16px 36px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;transition:background 0.3s,transform 0.3s;border:none;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;}
+.btn-primary:hover{background:var(--moss);transform:translateY(-2px);}
 
-nav a {
-  text-decoration: none;
-  color: #2b2b2b;
-  transition: color 0.3s, transform 0.2s;
-}
+/* CTA */
+.cta{text-align:center;padding:100px 40px;background:var(--paper);}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.cta p{font-size:14px;color:var(--stone);margin-bottom:44px;}
 
-nav a:hover {
-  color: #7a6650;
-  transform: translateY(-2px);
-}
-
-/* Hero Section */
-.hero {
-  height: 60vh;
-  background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  color: #fff;
-  overflow: hidden;
-  transition: transform 0.5s ease;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 100%; height: 100%;
-  top: 0; left: 0;
-  background: rgba(0,0,0,0.4);
-  transition: background 0.5s ease;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  padding: 20px;
-  transition: transform 0.5s ease;
-}
-
-/* Hero Hover Effects */
-.hero:hover {
-  transform: scale(1.03);
-}
-
-.hero:hover::after {
-  background: rgba(0,0,0,0.3);
-}
-
-.hero:hover .hero-content {
-  transform: translateY(-5px);
-}
-
-/* Hero Text & Button */
-.hero h1 {
-  font-size: 42px;
-  font-weight: 400;
-  margin-bottom: 15px;
-  transition: transform 0.5s ease;
-}
-
-.hero p {
-  font-size: 18px;
-  color: #f5f3f0;
-  margin-bottom: 20px;
-  transition: transform 0.5s ease;
-}
-
-.hero .btn {
-  padding: 14px 30px;
-  border: none;
-  background: #7a6650;
-  color: #f5f3f0;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: transform 0.3s, background 0.3s;
-}
-
-.hero .btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: #5f513e;
-}
-
-/* Container & Headings */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.container h2 {
-  font-size: 28px;
-  color: #2b2b2b;
-  font-weight: 500;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.container h2::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 3px;
-  background: #7a6650;
-  margin: 8px auto 0;
-  border-radius: 2px;
-  transition: width 0.5s ease;
-}
-
-.container h2:hover::after { width: 60px; }
-
-.container p.subtitle {
-  color: #555;
-  margin-bottom: 40px;
-  font-size: 16px;
-}
-
-/* Class Cards */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: #fffaf6;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transition: transform 0.4s, box-shadow 0.4s;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.02) rotateZ(0.5deg);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  transition: transform 0.4s, opacity 0.4s;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.card-content {
-  padding: 20px;
-}
-
-.card-content h3 {
-  margin-bottom: 8px;
-  color: #2b2b2b;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.card-content h3 svg {
-  width: 24px;
-  height: 24px;
-  fill: #7a6650;
-  transition: transform 0.3s;
-}
-
-.card:hover .card-content h3 svg {
-  transform: scale(1.2) rotate(10deg);
-}
-
-.card-content p {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-/* CTA Button */
-.btn-main {
-  margin-top: 30px;
-  padding: 14px 30px;
-  border: none;
-  background: #7a6650;
-  color: #f5f3f0;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-main:hover {
-  background: #5f513e;
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 25px 20px;
-  background: #7a6650;
-  color: #f5f3f0;
-  font-size: 14px;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  nav { flex-direction: column; gap: 10px; }
-  .hero h1 { font-size: 28px; }
-  .service-grid { grid-template-columns: 1fr; }
+/* FOOTER */
+footer{background:var(--ink);color:var(--stone);padding:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:40px;}
+.footer-brand .wordmark{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.3em;text-transform:uppercase;color:var(--birch);display:block;margin-bottom:8px;}
+.footer-brand p{font-size:12px;line-height:1.8;max-width:260px;color:#5a534a;}
+.footer-center{text-align:center;}
+.footer-divider{width:1px;height:60px;background:#333028;margin:0 auto 20px;}
+.footer-center p{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#3e3830;}
+.footer-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+.footer-links a{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#5a534a;text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--birch);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.15s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:900px){
+  nav,nav.scrolled{padding:18px 24px;}
+  nav ul{gap:18px;}
+  .page-hero{padding:0 24px 48px;}
+  .class-feature,.class-feature.reverse{grid-template-columns:1fr;direction:ltr;}
+  .class-feature-img{min-height:60vw;}
+  .class-feature-copy{padding:52px 28px;}
+  footer{grid-template-columns:1fr;}
+  .footer-links{align-items:flex-start;}
+  .footer-center{text-align:left;}
+  .footer-divider{margin:0 0 20px;}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <h1>Faith & Form</h1>
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="wordmark">Faith & Form</span>
+    <span class="tagline">Studio · Est. 2026</span>
+  </div>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -276,52 +103,110 @@ footer {
   </ul>
 </nav>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Faith & Form</h1>
-    <p>Your journey to a healthier, stronger you starts here.</p>
-    <a href="classes.html" class="btn btn-main">View Classes</a>
+<section class="page-hero">
+  <img src="image0.jpeg" alt="Strength training class">
+  <div class="page-hero-content">
+    <span class="eyebrow">Faith & Form Studio</span>
+    <h1>Our Classes</h1>
+    <p>Designed for all fitness levels</p>
   </div>
 </section>
 
-<div class="container">
-  <h2>Classes Designed for Everyone</h2>
-  <p class="subtitle">Explore our range of classes to fit your schedule and fitness goals.</p>
-
-  <div class="service-grid">
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Yoga class">
-      <div class="card-content">
-        <h3>Yoga</h3>
-        <p>Increase flexibility, focus, and inner calm in a welcoming environment.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Pilates class">
-      <div class="card-content">
-        <h3>Pilates</h3>
-        <p>Strengthen your core, improve posture, and enjoy mindful movement.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Strength class">
-      <div class="card-content">
-        <h3>Strength Training</h3>
-        <p>Build muscle, confidence, and resilience in a supportive setting.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <a href="contact.html" class="btn btn-main">Book Your Class</a>
+<div class="classes-intro reveal">
+  <span class="section-label">What We Offer</span>
+  <h2>Find the perfect class for your goals and energy.</h2>
+  <p>Explore classes that fit your lifestyle. Whether you're new to movement or ready to level up, there's a place for you here.</p>
 </div>
 
+<div class="class-feature reveal">
+  <div class="class-feature-img">
+    <img src="image2__1_.jpeg" alt="Yoga class at Faith & Form">
+  </div>
+  <div class="class-feature-copy">
+    <div class="class-num">01</div>
+    <span class="section-label">Mind & Body</span>
+    <h2>Yoga</h2>
+    <p>Increase flexibility, focus, and inner calm in a welcoming environment. Our yoga classes are breath-led and designed to meet you exactly where you are — no experience necessary.</p>
+    <div class="class-tags">
+      <span class="tag">All Levels</span>
+      <span class="tag">Flexibility</span>
+      <span class="tag">Mindfulness</span>
+      <span class="tag">Breathwork</span>
+    </div>
+    <a href="schedule.html" class="btn-primary">Book a Yoga Class</a>
+  </div>
+</div>
+
+<div class="class-feature reverse reveal">
+  <div class="class-feature-img">
+    <img src="image1__1_.jpeg" alt="Pilates class at Faith & Form">
+  </div>
+  <div class="class-feature-copy">
+    <div class="class-num">02</div>
+    <span class="section-label">Core & Posture</span>
+    <h2>Pilates</h2>
+    <p>Strengthen your core, improve posture, and enjoy mindful movement. Our Pilates classes use precise, intentional exercises to build a resilient, balanced body from the inside out.</p>
+    <div class="class-tags">
+      <span class="tag">All Levels</span>
+      <span class="tag">Core Strength</span>
+      <span class="tag">Posture</span>
+      <span class="tag">Low Impact</span>
+    </div>
+    <a href="schedule.html" class="btn-primary">Book a Pilates Class</a>
+  </div>
+</div>
+
+<div class="class-feature reveal">
+  <div class="class-feature-img">
+    <img src="image0.jpeg" alt="Strength training at Faith & Form">
+  </div>
+  <div class="class-feature-copy">
+    <div class="class-num">03</div>
+    <span class="section-label">Build & Grow</span>
+    <h2>Strength Training</h2>
+    <p>Build muscle, confidence, and resilience in a supportive setting. Our guided strength workouts are scaled to your level so you can push yourself safely and see real results.</p>
+    <div class="class-tags">
+      <span class="tag">All Levels</span>
+      <span class="tag">Muscle Building</span>
+      <span class="tag">Confidence</span>
+      <span class="tag">Guided</span>
+    </div>
+    <a href="schedule.html" class="btn-primary">Book a Strength Class</a>
+  </div>
+</div>
+
+<section class="cta">
+  <span class="section-label reveal">Not Sure Where to Start?</span>
+  <h2 class="reveal">We'll help you find your fit.</h2>
+  <p class="reveal">Reach out and we'll point you toward the right class for your goals and experience level.</p>
+  <a href="contact.html" class="btn-primary reveal">Get in Touch</a>
+</section>
+
 <footer>
-  <p>© 2026 Faith & Form Fitness Studio</p>
+  <div class="footer-brand">
+    <span class="wordmark">Faith & Form</span>
+    <p>A mindful fitness studio in Stearns, KY. Yoga, Pilates, and Strength for every body.</p>
+  </div>
+  <div class="footer-center">
+    <div class="footer-divider"></div>
+    <p>© 2026 Faith & Form</p>
+  </div>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="classes.html">Classes</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </footer>
 
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
