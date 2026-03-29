@@ -4,180 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Faith & Form</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <style>
-html { scroll-behavior: smooth; }
+:root{--ink:#1c1a17;--paper:#f2ede6;--stone:#a89b88;--moss:#6b7c5e;--birch:#d4c9b5;--warm-white:#faf8f4;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.8;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 56px;background:transparent;position:fixed;top:0;left:0;right:0;z-index:1000;transition:background 0.5s,padding 0.4s,border-bottom 0.4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(242,237,230,0.92);backdrop-filter:blur(12px);padding:18px 56px;border-bottom:1px solid var(--birch);}
+.nav-logo{display:flex;flex-direction:column;gap:1px;}
+.nav-logo .wordmark{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);line-height:1;}
+.nav-logo .tagline{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone);}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav a{text-decoration:none;color:var(--ink);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;position:relative;padding-bottom:3px;}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--moss);transition:width 0.4s ease;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--moss);}
 
-body {
-  margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  color: #2b2b2b;
-  background-color: #f5f3f0;
-  line-height: 1.7;
+.page-hero{height:58vh;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 72px;}
+.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(10%) brightness(0.82);}
+.page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,26,23,0.6) 0%,rgba(28,26,23,0.1) 60%);}
+.page-hero-content{position:relative;z-index:1;}
+.page-hero-content .eyebrow{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--birch);margin-bottom:12px;display:block;opacity:0;animation:fadeUp 0.9s 0.2s forwards;}
+.page-hero-content h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;color:#faf8f4;line-height:1.1;opacity:0;animation:fadeUp 0.9s 0.4s forwards;}
+
+.section-label{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--stone);margin-bottom:20px;display:block;}
+
+/* CONTACT LAYOUT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--birch);min-height:600px;}
+.contact-info{background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:80px 64px;}
+.contact-info .section-label{color:var(--stone);}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);font-weight:300;color:var(--warm-white);margin-bottom:24px;line-height:1.2;}
+.contact-info p{font-size:14px;color:var(--birch);line-height:1.9;margin-bottom:48px;max-width:360px;}
+.contact-details{display:flex;flex-direction:column;gap:24px;}
+.contact-detail-item .detail-label{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:4px;}
+.contact-detail-item .detail-val{font-size:14px;color:var(--birch);}
+
+.contact-form-wrap{background:var(--warm-white);display:flex;flex-direction:column;justify-content:center;padding:80px 64px;}
+.contact-form-wrap h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.5vw,34px);font-weight:300;color:var(--ink);margin-bottom:40px;}
+
+.form-group{position:relative;margin-bottom:32px;}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:18px 0 12px;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-weight:300;
+  font-size:14px;
+  color:var(--ink);
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--birch);
+  outline:none;
+  transition:border-color 0.3s;
+  resize:none;
+}
+.form-group input:focus,
+.form-group textarea:focus{border-color:var(--moss);}
+.form-group label{
+  position:absolute;
+  left:0;top:18px;
+  font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--stone);
+  pointer-events:none;
+  transition:all 0.3s ease;
+}
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label{
+  top:-4px;font-size:9px;color:var(--moss);letter-spacing:0.4em;
 }
 
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #fafafa;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+.btn-primary{display:inline-block;padding:16px 40px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;transition:background 0.3s,transform 0.3s;border:none;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;margin-top:8px;}
+.btn-primary:hover{background:var(--moss);transform:translateY(-2px);}
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
+/* success state */
+.form-success{display:none;text-align:center;padding:40px 0;}
+.form-success .check{font-size:36px;color:var(--moss);display:block;margin-bottom:16px;}
+.form-success p{font-size:14px;color:var(--stone);}
 
-nav a {
-  text-decoration: none;
-  color: #2b2b2b;
-  transition: color 0.3s, transform 0.2s;
-}
-
-nav a:hover {
-  color: #7a6650;
-  transform: translateY(-2px);
-}
-
-/* Hero */
-.hero {
-  height: 50vh;
-  background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  color: #fff;
-  overflow: hidden;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.35);
-  transition: background 0.4s ease;
-}
-
-.hero:hover::after {
-  background: rgba(0,0,0,0.5);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: 40px;
-  font-weight: 400;
-}
-
-.hero p {
-  margin-top: 10px;
-  color: #f5f3f0;
-}
-
-/* Container */
-.container {
-  max-width: 650px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-/* Form Card */
-.form-card {
-  background: #fffaf6;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-/* Labels */
-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #555;
-}
-
-/* Inputs */
-input, textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #fff;
-  font-family: inherit;
-  transition: 0.3s;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #7a6650;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* Button */
-.btn {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 25px;
-  background: #7a6650;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #5f513e;
-  transform: translateY(-2px);
-}
-
-/* Success Message */
-.success-message {
-  display: none;
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 12px;
-  background: #e8f5e9;
-  color: #2e7d32;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #7a6650;
-  color: #f5f3f0;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  nav { flex-direction: column; gap: 10px; }
-  .hero h1 { font-size: 28px; }
+/* FOOTER */
+footer{background:var(--ink);color:var(--stone);padding:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:40px;}
+.footer-brand .wordmark{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.3em;text-transform:uppercase;color:var(--birch);display:block;margin-bottom:8px;}
+.footer-brand p{font-size:12px;line-height:1.8;max-width:260px;color:#5a534a;}
+.footer-center{text-align:center;}
+.footer-divider{width:1px;height:60px;background:#333028;margin:0 auto 20px;}
+.footer-center p{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#3e3830;}
+.footer-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+.footer-links a{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#5a534a;text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--birch);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.15s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:900px){
+  nav,nav.scrolled{padding:18px 24px;}
+  nav ul{gap:18px;}
+  .page-hero{padding:0 24px 48px;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .contact-info,.contact-form-wrap{padding:56px 28px;}
+  footer{grid-template-columns:1fr;}
+  .footer-links{align-items:flex-start;}
+  .footer-center{text-align:left;}
+  .footer-divider{margin:0 0 20px;}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <h1>Faith & Form</h1>
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="wordmark">Faith & Form</span>
+    <span class="tagline">Studio · Est. 2026</span>
+  </div>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -187,54 +129,90 @@ footer {
   </ul>
 </nav>
 
-<section class="hero">
-  <div class="hero-content">
+<section class="page-hero">
+  <img src="image1.jpeg" alt="Instructor with student">
+  <div class="page-hero-content">
+    <span class="eyebrow">Reach Out</span>
     <h1>Contact Us</h1>
-    <p>We’d love to hear from you 🤍</p>
   </div>
 </section>
 
-<div class="container">
-  <div class="form-card">
-
-    <form action="https://formsubmit.co/faithandformfitnessstudio@outlook.com" method="POST" target="hidden_iframe" onsubmit="showSuccess(); return false;">
-
-      <!-- FormSubmit Settings -->
-      <input type="hidden" name="_captcha" value="false">
-
-      <label>Your Name</label>
-      <input type="text" name="name" required>
-
-      <label>Your Email</label>
-      <input type="email" name="email" required>
-
-      <label>Your Message</label>
-      <textarea name="message" rows="5" required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-
-    <!-- Hidden iframe prevents redirect -->
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-    <div class="success-message" id="success">
-      ✅ Message sent successfully! We’ll get back to you soon.
+<div class="contact-wrap">
+  <div class="contact-info reveal">
+    <span class="section-label">We'd Love to Hear From You</span>
+    <h2>Have questions? Ready to join?</h2>
+    <p>Send us a message and we'll get back to you as soon as possible. Whether you want to book a class, ask about memberships, or just say hello — we're here.</p>
+    <div class="contact-details">
+      <div class="contact-detail-item">
+        <span class="detail-label">Location</span>
+        <span class="detail-val">Stearns, Kentucky</span>
+      </div>
+      <div class="contact-detail-item">
+        <span class="detail-label">Classes</span>
+        <span class="detail-val">Yoga · Pilates · Strength</span>
+      </div>
+      <div class="contact-detail-item">
+        <span class="detail-label">Levels</span>
+        <span class="detail-val">All levels welcome</span>
+      </div>
     </div>
+  </div>
 
+  <div class="contact-form-wrap reveal reveal-delay-1">
+    <h2>Send a Message</h2>
+    <form id="contactForm">
+      <div class="form-group">
+        <input type="text" placeholder=" " required>
+        <label>Your Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder=" " required>
+        <label>Your Email</label>
+      </div>
+      <div class="form-group">
+        <textarea rows="5" placeholder=" " required></textarea>
+        <label>Your Message</label>
+      </div>
+      <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <span class="check">✦</span>
+      <p>Message sent — we'll be in touch soon.</p>
+    </div>
   </div>
 </div>
 
 <footer>
-  <p>© 2026 Faith & Form Fitness Studio</p>
+  <div class="footer-brand">
+    <span class="wordmark">Faith & Form</span>
+    <p>A mindful fitness studio in Stearns, KY. Yoga, Pilates, and Strength for every body.</p>
+  </div>
+  <div class="footer-center">
+    <div class="footer-divider"></div>
+    <p>© 2026 Faith & Form</p>
+  </div>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="classes.html">Classes</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </footer>
 
 <script>
-function showSuccess() {
-  document.getElementById("success").style.display = "block";
-  // Clear form fields
-  document.querySelector('form').reset();
-}
-</script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
 
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>
