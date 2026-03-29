@@ -197,7 +197,7 @@ footer {
 <div class="container">
   <div class="form-card">
 
-    <form action="https://formsubmit.co/faithandformfitnessstudio@outlook.com" method="POST" target="hidden_iframe" onsubmit="showSuccess()">
+    <form action="https://formsubmit.co/faithandformfitnessstudio@outlook.com" method="POST" target="hidden_iframe" onsubmit="showSuccess(); return false;">
 
       <!-- FormSubmit Settings -->
       <input type="hidden" name="_captcha" value="false">
@@ -230,9 +230,9 @@ footer {
 
 <script>
 function showSuccess() {
-  setTimeout(() => {
-    document.getElementById("success").style.display = "block";
-  }, 500);
+  document.getElementById("success").style.display = "block";
+  // Clear form fields
+  document.querySelector('form').reset();
 }
 </script>
 
