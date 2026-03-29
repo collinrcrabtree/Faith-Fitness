@@ -4,92 +4,131 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faith & Form | Home</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --ink:#1c1a17;
-  --paper:#f2ede6;
-  --stone:#a89b88;
-  --moss:#6b7c5e;
-  --birch:#d4c9b5;
-  --warm-white:#faf8f4;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:'Zen Kaku Gothic New',sans-serif;
-  background:var(--paper);
-}
-
-/* HEADER */
-#nav-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:24px 40px;
-  position:fixed;
-  width:100%;
-  z-index:1000;
-}
-
-.nav-logo .wordmark{
-  font-family:'Cormorant Garamond',serif;
-  letter-spacing:.2em;
-}
-
-#nav-header ul{
-  list-style:none;
-  display:flex;
-  gap:30px;
-}
-
-#nav-header a{
-  text-decoration:none;
-  font-size:12px;
-  letter-spacing:.2em;
-  color:var(--ink);
-}
-
-/* HERO spacing fix */
-.hero{
-  margin-top:100px;
-  padding:60px 40px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:80px;
-  padding:40px;
-  background:#111;
-  color:#aaa;
-  display:flex;
-  justify-content:space-between;
-}
-
-.footer-links{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.footer-links a{
-  color:#aaa;
-  text-decoration:none;
+:root{--ink:#1c1a17;--paper:#f2ede6;--stone:#a89b88;--moss:#6b7c5e;--birch:#d4c9b5;--warm-white:#faf8f4;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.8;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 56px;background:transparent;position:fixed;top:0;left:0;right:0;z-index:1000;transition:background 0.5s,padding 0.4s,border-bottom 0.4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(242,237,230,0.92);backdrop-filter:blur(12px);padding:18px 56px;border-bottom:1px solid var(--birch);}
+.nav-logo{display:flex;flex-direction:column;gap:1px;}
+.nav-logo .wordmark{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);line-height:1;}
+.nav-logo .tagline{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone);}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav a{text-decoration:none;color:var(--ink);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;position:relative;padding-bottom:3px;}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--moss);transition:width 0.4s ease;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--moss);}
+.hero{height:100vh;min-height:640px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:140px 56px 80px;background:var(--warm-white);position:relative;z-index:1;}
+.hero-eyebrow{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--moss);margin-bottom:24px;opacity:0;animation:fadeUp 1s 0.2s forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,68px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:28px;opacity:0;animation:fadeUp 1s 0.4s forwards;}
+.hero-title em{font-style:italic;color:var(--moss);}
+.hero-body{font-size:15px;color:#5a5549;max-width:380px;line-height:1.9;margin-bottom:44px;opacity:0;animation:fadeUp 1s 0.6s forwards;}
+.hero-actions{display:flex;align-items:center;gap:32px;opacity:0;animation:fadeUp 1s 0.8s forwards;}
+.btn-primary{display:inline-block;padding:16px 36px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;transition:background 0.3s,transform 0.3s;border:none;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;}
+.btn-primary:hover{background:var(--moss);transform:translateY(-2px);}
+.btn-ghost{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--birch);padding-bottom:2px;transition:color 0.3s,border-color 0.3s;}
+.btn-ghost:hover{color:var(--moss);border-color:var(--moss);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(8%) brightness(0.93);transition:transform 8s ease;}
+.hero-right:hover img{transform:scale(1.04);}
+.hero-badge{position:absolute;bottom:48px;left:48px;background:var(--warm-white);padding:20px 28px;opacity:0;animation:fadeUp 1s 1s forwards;}
+.hero-badge .num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--ink);line-height:1;}
+.hero-badge .label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone);margin-top:4px;}
+.marquee-wrap{background:var(--moss);padding:14px 0;overflow:hidden;white-space:nowrap;}
+.marquee-track{display:inline-block;animation:marquee 22s linear infinite;}
+.marquee-track span{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(242,237,230,0.7);margin:0 40px;}
+.marquee-track span.dot{color:rgba(242,237,230,0.3);margin:0;letter-spacing:0;}
+.intro{max-width:780px;margin:120px auto;padding:0 40px;text-align:center;}
+.section-label{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--stone);margin-bottom:24px;display:block;}
+.intro-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,40px);font-weight:300;line-height:1.45;color:var(--ink);margin-bottom:32px;}
+.intro-quote em{font-style:italic;color:var(--moss);}
+.intro-divider{width:1px;height:60px;background:var(--birch);margin:0 auto 32px;}
+.intro-sub{font-size:14px;color:#6b6358;max-width:540px;margin:0 auto;}
+.classes-section{padding:60px 56px 100px;}
+.classes-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;border-bottom:1px solid var(--birch);padding-bottom:24px;}
+.classes-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--ink);}
+.classes-link{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--birch);padding-bottom:2px;transition:color 0.3s,border-color 0.3s;}
+.classes-link:hover{color:var(--moss);border-color:var(--moss);}
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--birch);}
+.class-card{background:var(--warm-white);overflow:hidden;position:relative;transition:background 0.4s;}
+.class-card img{width:100%;height:220px;object-fit:cover;display:block;filter:sepia(8%) brightness(0.95);transition:transform 0.6s ease;}
+.class-card:hover img{transform:scale(1.04);}
+.class-card-body{padding:32px 28px;}
+.class-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--moss);transition:width 0.5s ease;}
+.class-card:hover::after{width:100%;}
+.class-card:hover{background:#fffefb;}
+.class-number{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--stone);letter-spacing:0.2em;margin-bottom:10px;}
+.class-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--ink);margin-bottom:8px;}
+.class-desc{font-size:13px;color:#6b6358;line-height:1.9;margin-bottom:20px;}
+.class-meta{display:flex;gap:24px;}
+.meta-label{font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--stone);display:block;}
+.meta-val{font-size:13px;color:var(--ink);}
+.studio-strip{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
+.studio-img{overflow:hidden;}
+.studio-img img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(10%) brightness(0.9);transition:transform 6s ease;}
+.studio-img:hover img{transform:scale(1.05);}
+.studio-copy{background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:80px 64px;}
+.studio-copy .section-label{color:var(--stone);}
+.studio-copy h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,38px);font-weight:300;line-height:1.2;margin-bottom:20px;color:var(--warm-white);}
+.studio-copy p{font-size:14px;color:var(--birch);line-height:2;margin-bottom:36px;max-width:380px;}
+.btn-outline-light{display:inline-block;padding:14px 32px;border:1px solid rgba(212,201,181,0.4);color:var(--birch);text-decoration:none;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;transition:background 0.3s,color 0.3s,border-color 0.3s;}
+.btn-outline-light:hover{background:var(--moss);color:var(--warm-white);border-color:var(--moss);}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--birch);gap:1px;}
+.stat{background:var(--warm-white);padding:56px 48px;text-align:center;}
+.stat .num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--ink);line-height:1;display:block;}
+.stat .unit{font-size:28px;color:var(--moss);}
+.stat .label{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--stone);margin-top:12px;display:block;}
+.cta{text-align:center;padding:120px 40px;background:var(--paper);}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,50px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.cta p{font-size:14px;color:var(--stone);margin-bottom:44px;}
+footer{background:var(--ink);color:var(--stone);padding:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:40px;}
+.footer-brand .wordmark{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.3em;text-transform:uppercase;color:var(--birch);display:block;margin-bottom:8px;}
+.footer-brand p{font-size:12px;line-height:1.8;max-width:260px;color:#5a534a;}
+.footer-center{text-align:center;}
+.footer-divider{width:1px;height:60px;background:#333028;margin:0 auto 20px;}
+.footer-center p{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#3e3830;}
+.footer-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+.footer-links a{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#5a534a;text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--birch);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.15s;}
+.reveal-delay-2{transition-delay:0.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(max-width:900px){
+  nav,nav.scrolled{padding:18px 24px;}
+  nav ul{gap:18px;}
+  .hero{grid-template-columns:1fr;height:auto;}
+  .hero-left{padding:130px 28px 56px;}
+  .hero-right{height:65vw;}
+  .classes-section{padding:48px 24px 72px;}
+  .classes-grid{grid-template-columns:1fr;}
+  .studio-strip{grid-template-columns:1fr;}
+  .studio-img{height:60vw;}
+  .studio-copy{padding:56px 28px;}
+  .stats{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr;}
+  .footer-links{align-items:flex-start;}
+  .footer-center{text-align:left;}
+  .footer-divider{margin:0 0 20px;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- ✅ FIXED NAV (ONLY ONE) -->
-<nav id="nav-header">
+<nav id="nav">
   <div class="nav-logo">
     <span class="wordmark">Faith & Form</span>
+    <span class="tagline">Studio · Est. 2026</span>
   </div>
-
   <ul>
+    <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="classes.html">Classes</a></li>
     <li><a href="schedule.html">Schedule</a></li>
@@ -98,21 +137,141 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1>Faith in yourself. Strength in your form.</h1>
-  <p>A welcoming studio for yoga, Pilates, and strength.</p>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Stearns, Kentucky</p>
+    <h1 class="hero-title">Faith in yourself.<br><em>Strength</em> in your form.</h1>
+    <p class="hero-body">A welcoming studio where yoga, Pilates, and strength training come together. Every body, every level, every goal.</p>
+    <div class="hero-actions">
+      <a href="classes.html" class="btn-primary">Explore Classes</a>
+      <a href="schedule.html" class="btn-ghost">View Schedule</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="image4.jpeg" alt="Faith & Form Studio">
+    <div class="hero-badge">
+      <div class="num">3</div>
+      <div class="label">Class Disciplines</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Yoga</span><span class="dot">·</span><span>Pilates</span><span class="dot">·</span><span>Strength Training</span><span class="dot">·</span><span>All Levels Welcome</span><span class="dot">·</span><span>Community</span><span class="dot">·</span><span>Yoga</span><span class="dot">·</span><span>Pilates</span><span class="dot">·</span><span>Strength Training</span><span class="dot">·</span><span>All Levels Welcome</span><span class="dot">·</span><span>Community</span><span class="dot">·</span>
+  </div>
+</div>
+
+<section class="intro reveal">
+  <span class="section-label">Our Philosophy</span>
+  <p class="intro-quote">Fitness is more than physical — it's mental <em>and spiritual.</em></p>
+  <div class="intro-divider"></div>
+  <p class="intro-sub">At Faith & Form, we believe in building confidence, strength, and balance in a warm, encouraging environment. Every step forward is worth celebrating.</p>
+</section>
+
+<section class="classes-section">
+  <div class="classes-header reveal">
+    <h2 class="classes-title">Our Classes</h2>
+    <a href="classes.html" class="classes-link">All Classes →</a>
+  </div>
+  <div class="classes-grid">
+    <div class="class-card reveal">
+      <img src="image2__1_.jpeg" alt="Yoga class">
+      <div class="class-card-body">
+        <div class="class-number">01</div>
+        <h3 class="class-name">Yoga</h3>
+        <p class="class-desc">Improve flexibility, balance, and peace of mind in a welcoming environment.</p>
+        <div class="class-meta">
+          <div><span class="meta-label">Level</span><span class="meta-val">All levels</span></div>
+          <div><span class="meta-label">Format</span><span class="meta-val">Group &amp; Private</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal reveal-delay-1">
+      <img src="image1__1_.jpeg" alt="Pilates class">
+      <div class="class-card-body">
+        <div class="class-number">02</div>
+        <h3 class="class-name">Pilates</h3>
+        <p class="class-desc">Strengthen your core, improve posture, and enjoy mindful movement.</p>
+        <div class="class-meta">
+          <div><span class="meta-label">Level</span><span class="meta-val">All levels</span></div>
+          <div><span class="meta-label">Format</span><span class="meta-val">Group &amp; Private</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal reveal-delay-2">
+      <img src="image0.jpeg" alt="Strength Training class">
+      <div class="class-card-body">
+        <div class="class-number">03</div>
+        <h3 class="class-name">Strength Training</h3>
+        <p class="class-desc">Build muscle, confidence, and resilience in a supportive setting.</p>
+        <div class="class-meta">
+          <div><span class="meta-label">Level</span><span class="meta-val">All levels</span></div>
+          <div><span class="meta-label">Format</span><span class="meta-val">Group &amp; Private</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="studio-strip">
+  <div class="studio-img reveal">
+    <img src="image2.jpeg" alt="Studio interior">
+  </div>
+  <div class="studio-copy reveal reveal-delay-1">
+    <span class="section-label">The Space</span>
+    <h2>A sanctuary designed for you</h2>
+    <p>Natural light, mirrored walls, and a warm welcoming floor — our studio is designed to help you focus on what matters: your movement, your growth, your community.</p>
+    <a href="about.html" class="btn-outline-light">About the Studio</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat reveal">
+    <span class="num">3<span class="unit">+</span></span>
+    <span class="label">Class Types</span>
+  </div>
+  <div class="stat reveal reveal-delay-1">
+    <span class="num">All</span>
+    <span class="label">Levels Welcome</span>
+  </div>
+  <div class="stat reveal reveal-delay-2">
+    <span class="num">1</span>
+    <span class="label">Tight-Knit Community</span>
+  </div>
+</div>
+
+<section class="cta">
+  <span class="section-label reveal">Begin Your Journey</span>
+  <h2 class="reveal">Ready to start?</h2>
+  <p class="reveal">No experience needed — only an open mind and a willingness to grow.</p>
+  <a href="contact.html" class="btn-primary reveal">Book Your First Class</a>
 </section>
 
 <footer>
-  <div>© 2026 Faith & Form</div>
-
-  <!-- This is OK to keep -->
-  <div class="footer-links">
+  <div class="footer-brand">
+    <span class="wordmark">Faith & Form</span>
+    <p>A mindful fitness studio in Stearns, KY. Yoga, Pilates, and Strength for every body.</p>
+  </div>
+  <div class="footer-center">
+    <div class="footer-divider"></div>
+    <p>© 2026 Faith & Form</p>
+  </div>
+  <nav class="footer-links">
     <a href="about.html">About</a>
     <a href="classes.html">Classes</a>
     <a href="schedule.html">Schedule</a>
     <a href="contact.html">Contact</a>
-  </div>
+  </nav>
 </footer>
 
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
