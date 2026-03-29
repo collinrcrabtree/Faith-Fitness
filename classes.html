@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Classes | Faith & Form</title>
+<title>Home | Faith & Form</title>
 
 <style>
 html { scroll-behavior: smooth; }
@@ -53,9 +53,8 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-  height: 50vh;
+  height: 60vh;
   background: url('https://via.placeholder.com/1600x600') center/cover no-repeat;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +70,7 @@ nav a:hover {
   position: absolute;
   width: 100%; height: 100%;
   top: 0; left: 0;
-  background: rgba(0,0,0,0.4); /* overlay */
+  background: rgba(0,0,0,0.4);
   transition: background 0.5s ease;
 }
 
@@ -98,7 +97,7 @@ nav a:hover {
 
 /* Hero Text & Button */
 .hero h1 {
-  font-size: 40px;
+  font-size: 42px;
   font-weight: 400;
   margin-bottom: 15px;
   transition: transform 0.5s ease;
@@ -112,17 +111,18 @@ nav a:hover {
 }
 
 .hero .btn {
-  padding: 12px 25px;
+  padding: 14px 30px;
   border: none;
   background: #7a6650;
   color: #f5f3f0;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
+  font-weight: 500;
   transition: transform 0.3s, background 0.3s;
 }
 
 .hero .btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.05);
   background: #5f513e;
 }
 
@@ -228,9 +228,9 @@ nav a:hover {
 }
 
 /* CTA Button */
-.btn {
+.btn-main {
   margin-top: 30px;
-  padding: 12px 25px;
+  padding: 14px 30px;
   border: none;
   background: #7a6650;
   color: #f5f3f0;
@@ -240,7 +240,7 @@ nav a:hover {
   transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-.btn:hover {
+.btn-main:hover {
   background: #5f513e;
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -278,25 +278,22 @@ footer {
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Our Classes</h1>
-    <p>Find the perfect class to match your goals and energy</p>
-    <button class="btn">Book a Class</button>
+    <h1>Welcome to Faith & Form</h1>
+    <p>Your journey to a healthier, stronger you starts here.</p>
+    <a href="classes.html" class="btn btn-main">View Classes</a>
   </div>
 </section>
 
 <div class="container">
-  <h2>Designed for All Fitness Levels</h2>
-  <p class="subtitle">Explore classes that fit your goals and your schedule.</p>
+  <h2>Classes Designed for Everyone</h2>
+  <p class="subtitle">Explore our range of classes to fit your schedule and fitness goals.</p>
 
   <div class="service-grid">
 
     <div class="card">
       <img src="https://via.placeholder.com/400x300" alt="Yoga class">
       <div class="card-content">
-        <h3>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
-          Yoga
-        </h3>
+        <h3>Yoga</h3>
         <p>Increase flexibility, focus, and inner calm in a welcoming environment.</p>
       </div>
     </div>
@@ -304,28 +301,22 @@ footer {
     <div class="card">
       <img src="https://via.placeholder.com/400x300" alt="Pilates class">
       <div class="card-content">
-        <h3>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
-          Pilates
-        </h3>
+        <h3>Pilates</h3>
         <p>Strengthen your core, improve posture, and enjoy mindful movement.</p>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Strength Training class">
+      <img src="https://via.placeholder.com/400x300" alt="Strength class">
       <div class="card-content">
-        <h3>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
-          Strength
-        </h3>
+        <h3>Strength Training</h3>
         <p>Build muscle, confidence, and resilience in a supportive setting.</p>
       </div>
     </div>
 
   </div>
 
-  <button class="btn">Book Your Class</button>
+  <a href="contact.html" class="btn btn-main">Book Your Class</a>
 </div>
 
 <footer>
